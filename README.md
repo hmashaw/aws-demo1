@@ -1,1 +1,3 @@
-# aws-demo1
+# AWS-Demo1
+
+Demo of AWS and ReactJS
