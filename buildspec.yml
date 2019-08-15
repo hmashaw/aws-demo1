@@ -5,16 +5,16 @@ phases:
     runtime-versions:
       nodejs: 10
     commands:
-      - echo Install ...
+    - echo Installing ...
 
   build:
     commands:
-      - echo Move along ... Nothing to see here
+    - echo Building ... Move along ... Nothing to see here
 
 artifacts:
   files:
-    - index.html
-    - favicon.ico
-    - images/*
-    - styles/*
+  - index.html
+  - favicon.ico
+  - images/*
+  - styles/*
 
