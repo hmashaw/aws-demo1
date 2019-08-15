@@ -1,14 +1,20 @@
-versios: 0.1
+version: 0.2
 
 phases:
-  builld:
+  install:
+    runtime-versions:
+      nodejs: 10
     commands:
-    - echo Move along ... Nothing to see here
+      - echo Install ...
+
+  build:
+    commands:
+      - echo Move along ... Nothing to see here
 
 artifacts:
   files:
-  - index.html
-  - favicon.ico
-  - images/*
-  - styles/*
+    - index.html
+    - favicon.ico
+    - images/*
+    - styles/*
 
