@@ -1,0 +1,14 @@
+versios: 0.1
+
+phases:
+  builld:
+    commands:
+    - echo Move along ... Nothing to see here
+
+artifacts:
+  files:
+  - index.html
+  - favicon.ico
+  - images/*
+  - styles/*
+
