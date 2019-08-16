@@ -6,6 +6,8 @@
     <meta name="description" content="My Babel Demo">
     <meta name="author" content="HVAG.Mark">
 
+    <link href="https://unpkg.com/mocha/mocha.css" rel="stylesheet" />
+
     <style>
         .messageBox {
             border: 1px solid;
@@ -32,7 +34,11 @@
 
     <main id="root"></main>
 
+    <div id="mocha"></div>
+
     <script src="https://www.unpkg.com/babel-standalone"></script>
+    <script src="https://www.unpkg.com/mocha/mocha.js"></script>
+    <script src="https://www.unpkg.com/chai/chai.js"></script>
     <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
 
@@ -53,7 +59,7 @@
             return (
                 <div>
                     <label>Name: <input ref={nameInput} type="text" /></label>
-                    <button onClick={buttonClicked}>Enter</button>
+                    <button id="inputButton" onClick={buttonClicked}>Enter</button>
                     <MessageBox type={type} message={body}/>
                 </div>
             )
@@ -70,6 +76,44 @@
             document.getElementById('root')
         )
 
+    </script>
+
+    <script type="text/babel" data-presets="react">
+
+        const assert = chai.assert
+
+        mocha.ui('bdd')
+        mocha.reporter('html')
+
+        describe('Mocha Demo', () => {
+            it('Checks that Math works', () => {
+                assert.equal(5, 3+2, 'Equal works')
+                assert.notEqual(6, 3+2, 'notEqual works')
+            })
+
+            it('Components are defined', () => {
+                assert.isDefined(MessageBox, 'MessageBox is defined')
+            })
+        })
+
+        describe('React application tests', () => {
+            it('Rendered an empty messageBox', () => {
+                let msgBox = document.querySelector('.messageBox')
+                assert.isDefined(msgBox, 'Message box was created')
+                assert.include(msgBox.classList.value, 'hidden', 'Message box class includes hidden')
+                assert.equal(msgBox.innerText, '', 'Message box is empty')
+            })
+
+            it('Renders error when name is empty on buttonClick', () => {
+                let msgBox = document.querySelector('.messageBox')
+                let button = document.querySelector('#inputButton')
+                button.click()
+                assert.include(msgBox.classList.value, 'error', 'Message box class includes error')
+            })
+        })
+
+        mocha.run()
+ 
     </script>
 
 </body>
