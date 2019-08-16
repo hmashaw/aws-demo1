@@ -1,0 +1,33 @@
+{
+  "name": "aws-demo1",
+  "version": "1.0.0",
+  "description": "Demo of AWS and ReactJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack",
+    "webpack-watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hmashaw/aws-demo1.git"
+  },
+  "keywords": [],
+  "author": "HVAG.Mark",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hmashaw/aws-demo1/issues"
+  },
+  "homepage": "https://github.com/hmashaw/aws-demo1#readme",
+  "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6"
+  }
+}
