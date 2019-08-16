@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="My Babel Demo">
+    <meta name="author" content="HVAG.Mark">
+
+    <style>
+        .messageBox {
+            border: 1px solid;
+            margin: 1em;
+            padding: 2em;
+        }
+        .error {
+            border-color: red;
+            background-color: #eebbbb;
+        }
+        .success {
+            border-color: blue;
+            background-color: #bbbbee
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <title>My Babel Demo</title>
+</head>
+
+<body>
+
+    <main id="root"></main>
+
+    <script src="https://www.unpkg.com/babel-standalone"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+
+    <script type="text/babel" data-presets="react">
+
+        const NameInput = () => {
+            const [type, setType] = React.useState(undefined)
+            const [body, setBody] = React.useState(undefined)
+
+            const nameInput = React.useRef(undefined)
+
+            const buttonClicked = e => {
+                const name = nameInput.current.value
+                setType(name ? 'success' : 'error')
+                setBody(name ? `Welcome to React, ${name}` : 'You must enter a name!')
+            }
+
+            return (
+                <div>
+                    <label>Name: <input ref={nameInput} type="text" /></label>
+                    <button onClick={buttonClicked}>Enter</button>
+                    <MessageBox type={type} message={body}/>
+                </div>
+            )
+        }
+
+        const MessageBox = ({ type, message }) => {
+            return (
+                <div className={`messageBox ${type || 'hidden'}`}>{message}</div>
+            )
+        }
+
+        ReactDOM.render(
+            <NameInput />,
+            document.getElementById('root')
+        )
+
+    </script>
+
+</body>
+
+</html>
