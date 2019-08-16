@@ -5,11 +5,13 @@ phases:
     runtime-versions:
       nodejs: 10
     commands:
-    - echo Installing ...
+    - echo Installing...
 
   build:
     commands:
-    - echo Building ... Move along ... Nothing to see here
+    - echo Building...
+    - npm install
+    - npm run webpack
 
 artifacts:
   files:
@@ -18,4 +20,5 @@ artifacts:
   - favicon.ico
   - images/*
   - styles/*
+  - dist/bundle.js
 
